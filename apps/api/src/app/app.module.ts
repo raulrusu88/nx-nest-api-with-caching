@@ -1,10 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CoreModule } from '@nx-nest-api-with-caching/core';
-
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserService } from './user/service/user.service';
-import { UserController } from './user/controller/user.controller';
 import { UserModule } from './user/user.module';
 
 @Module({
