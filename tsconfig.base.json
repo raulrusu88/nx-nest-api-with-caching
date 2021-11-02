@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-nest-api-with-caching/core": ["libs/core/src/index.ts"]
+      "@nx-nest-api-with-caching/core": ["libs/core/src/index.ts"],
+      "@nx-nest-api-with-caching/typeorm-entities": [
+        "libs/typeorm-entities/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

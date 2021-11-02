@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { configuration } from './config/configuration';
 import { validationSchema } from './config/validation';
 
+import { UserEntity } from '@nx-nest-api-with-caching/typeorm-entities';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,17 +24,19 @@ import { validationSchema } from './config/validation';
         username: configService.get('pg_username'),
         password: configService.get('pg_password'),
         database: configService.get('pg_database'),
-        entities: ['**/*.entity{.ts,.js}'],
+        entities: ['dist/**/*.entity{.ts,.js}'],
+        autoLoadEntities: true,
         migrationsTableName: 'migration',
-        migrations: ['src/migration/*.ts'],
+        migrations: ['dist/migrations/*.{ts,js}'],
         synchronize: true, // on production disable this,
         logging: true,
         logger: 'advanced-console',
         cli: {
-          migrationsDir: 'src/migration',
+          migrationsDir: 'apps/api/src/migrations',
         },
       }),
     }),
+    TypeOrmModule.forFeature([UserEntity]),
   ],
   controllers: [],
   providers: [],
