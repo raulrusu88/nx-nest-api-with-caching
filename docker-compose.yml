@@ -7,12 +7,12 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_DB: ecommerce_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: raul
+      POSTGRES_DB: '${PG_DATABASE}'
+      POSTGRES_USER: '${PG_USERNAME}'
+      POSTGRES_PASSWORD: '${PG_PASSWORD}'
 
-  dbeaver:
-    image: dbeaver/cloudbeaver
-    restart: always
-    ports:
-      - 8080:8978
+  # dbeaver:
+  #   image: dbeaver/cloudbeaver
+  #   restart: always
+  #   ports:
+  #     - 8080:8978
